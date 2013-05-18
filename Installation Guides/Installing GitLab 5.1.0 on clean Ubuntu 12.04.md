@@ -1,14 +1,17 @@
 # Server Configuration
 
 ### Get the essentials
+
 * $ sudo apt-get update
 * $ sudo apt-get upgrade
 * $ sudo apt-get install nano tcpdump strace
 
 ### Check for unwanted listeners
+
 * $ netstat -alpn
 
 ### Re-configure the timezone
+
 * $ date
 * $ more /etc/timezone
 * $ sudo dpkg-reconfigure tzdata
@@ -16,12 +19,14 @@
 * $ sudo service cron start
 
 ### Add a new user and include on the sudoers list
+
 * $ sudo useradd -m -s /bin/bash [USERNAME]
 * $ sudo passwd [USERNAME]
 * $ sudo adduser [USERNAME] sudo
 * $ sudo service ssh reload
  
 ### Edit and uncomment the `ListenAddress` statement, alert the `PermitRootLogin` statement, and add the `AllowUsers` statement
+
 * $ sudo nano /etc/ssh/sshd_config
 
     ListenAddress 0.0.0.0
@@ -29,6 +34,7 @@
     AllowUsers [USERNAME]
 
 ### Add the following lines under the file's `restrict` statements
+
 * $ sudo nano /etc/ntp.conf
 
     # Disable wild card listener
@@ -37,6 +43,7 @@
 * $ sudo service ntp restart
 
 # Gitlab 5.1.0 Installation 
+
 Based on [https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md](https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md)
 
 ### Prepare the system. 
