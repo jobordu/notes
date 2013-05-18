@@ -49,13 +49,13 @@ $ sudo apt-get install -y python2.7 ruby1.9.1
 $ sudo gem install bundler
 
 ### Install gitlab-shell
-$ sudo adduser --disabled-login --gecos 'GitLab' git
-$ sudo su git
-$ cd /home/git
-$ git clone https://github.com/gitlabhq/gitlab-shell.git
-$ cd gitlab-shell
-$ git checkout v1.3.0
-$ cp config.yml.example config.yml
+* $ sudo adduser --disabled-login --gecos 'GitLab' git
+* $ sudo su git
+* $ cd /home/git
+* $ git clone https://github.com/gitlabhq/gitlab-shell.git
+* $ cd gitlab-shell
+* $ git checkout v1.3.0
+* $ cp config.yml.example config.yml
 
 ### Edit and replace the `gitlab_url` statement with the appropriate url
 $ nano -S config.yml
