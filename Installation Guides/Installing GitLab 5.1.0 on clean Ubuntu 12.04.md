@@ -236,7 +236,9 @@ $ sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
         Redownload the init script
         doc/install/installation.md in section "Install Init Script"
 
-### Start up the services, netstat should should a gitlab unix listen socket
+### Start up the services
+
+netstat should show a unix listen socket belonging to GitLab
 
 $ sudo service gitlab start
 
