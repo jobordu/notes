@@ -224,7 +224,9 @@ $ sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production
     Hooks: /home/git/gitlab-shell/hooks/
     Git: /usr/bin/git
 
-### A second test, it will notify you to start `sidekiq`, ignore the init script notification
+### A second test
+
+You will be notified you to start `sidekiq`, and re-install the init.d script, ignore the latter
 
 $ sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
 
