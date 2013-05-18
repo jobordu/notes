@@ -39,9 +39,13 @@ $ sudo service ntp restart
 # Gitlab 5.1.0 Installation 
 Based on [https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md](https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md)
 
-### Prepare the system. do you want `postfix`? (Don't forget to add it if you do...)
+### Prepare the system. 
+#### Do you want `postfix`? (Don't forget to add it if you do...)
+
 $ sudo apt-get install -y build-essential nano zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl git-core openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev
+
 $ sudo apt-get install -y python2.7 ruby1.9.1
+
 $ sudo gem install bundler
 
 ### Install gitlab-shell
