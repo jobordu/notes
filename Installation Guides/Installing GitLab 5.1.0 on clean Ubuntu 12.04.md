@@ -1,40 +1,40 @@
 # Server Configuration
 
 ### Get the essentials
-$ sudo apt-get update
-$ sudo apt-get upgrade
-$ sudo apt-get install nano tcpdump strace
+* $ sudo apt-get update
+* $ sudo apt-get upgrade
+* $ sudo apt-get install nano tcpdump strace
 
 ### Check for unwanted listeners
-$ netstat -alpn
+* $ netstat -alpn
 
 ### Re-configure the timezone
-$ date
-$ more /etc/timezone
-$ sudo dpkg-reconfigure tzdata
-$ sudo service cron stop
-$ sudo service cron start
+* $ date
+* $ more /etc/timezone
+* $ sudo dpkg-reconfigure tzdata
+* $ sudo service cron stop
+* $ sudo service cron start
 
 ### Add a new user and include on the sudoers list
-$ sudo useradd -m -s /bin/bash [USERNAME]
-$ sudo passwd [USERNAME]
-$ sudo adduser [USERNAME] sudo
-$ sudo service ssh reload
+* $ sudo useradd -m -s /bin/bash [USERNAME]
+* $ sudo passwd [USERNAME]
+* $ sudo adduser [USERNAME] sudo
+* $ sudo service ssh reload
  
 ### Edit and uncomment the `ListenAddress` statement, alert the `PermitRootLogin` statement, and add the `AllowUsers` statement
-$ sudo nano /etc/ssh/sshd_config
+* $ sudo nano /etc/ssh/sshd_config
 
     ListenAddress 0.0.0.0
     PermitRootLogin no
     AllowUsers [USERNAME]
 
 ### Add the following lines under the file's `restrict` statements
-$ sudo nano /etc/ntp.conf
+* $ sudo nano /etc/ntp.conf
 
     # Disable wild card listener
     interface ignore wildcard
 
-$ sudo service ntp restart
+* $ sudo service ntp restart
 
 # Gitlab 5.1.0 Installation 
 Based on [https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md](https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md)
@@ -42,11 +42,9 @@ Based on [https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installat
 ### Prepare the system. 
 #### Do you want `postfix`? (Don't forget to add it if you do...)
 
-$ sudo apt-get install -y build-essential nano zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl git-core openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev
-
-$ sudo apt-get install -y python2.7 ruby1.9.1
-
-$ sudo gem install bundler
+* $ sudo apt-get install -y build-essential nano zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl git-core openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev
+* $ sudo apt-get install -y python2.7 ruby1.9.1
+* $ sudo gem install bundler
 
 ### Install gitlab-shell
 * $ sudo adduser --disabled-login --gecos 'GitLab' git
@@ -58,17 +56,17 @@ $ sudo gem install bundler
 * $ cp config.yml.example config.yml
 
 ### Edit and replace the `gitlab_url` statement with the appropriate url
-$ nano -S config.yml
+* $ nano -S config.yml
 
     gitlab_url: "http://[FQDN]/"
 
 ### Install and change back to the original user account
-$ ./bin/install
-$ exit
+* $ ./bin/install
+* $ exit
 
 ### Install mysql
-$ sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
-$ sudo mysql -u root -p
+* $ sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
+* $ sudo mysql -u root -p
 
     CREATE USER 'gitlab'@'localhost' IDENTIFIED BY '[MYSQLUSERPASSWD]';
     CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
@@ -76,37 +74,37 @@ $ sudo mysql -u root -p
     GRANT SELECT, LOCK TABLES, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `gitlabhq_production`.* TO 'gitlab'@'localhost';
     EXIT;
 
-$ sudo -u git -H mysql -u gitlab -p -D gitlabhq_production
+* $ sudo -u git -H mysql -u gitlab -p -D gitlabhq_production
 
 ### Prepare the directory structure for GitLab
-$ cd /home/git
-$ sudo -u git -H git clone https://github.com/gitlabhq/gitlabhq.git gitlab
-$ cd /home/git/gitlab
-$ sudo -u git -H git checkout 5-1-stable
-$ cd /home/git/gitlab
-$ sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
+* $ cd /home/git
+* $ sudo -u git -H git clone https://github.com/gitlabhq/gitlabhq.git gitlab
+* $ cd /home/git/gitlab
+* $ sudo -u git -H git checkout 5-1-stable
+* $ cd /home/git/gitlab
+* $ sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
 #### Change `localhost` to your fully-qualified domain name, and disable gravatar if you want
-$ sudo -u git -H nano -S config/gitlab.yml
+* $ sudo -u git -H nano -S config/gitlab.yml
 
     host: [FQDN]
     port: 80
     gravatar: enabled: false
 
-$ sudo chown -R git log/
-$ sudo chown -R git tmp/
-$ sudo chmod -R u+rwX log/
-$ sudo chmod -R u+rwX tmp/
-$ sudo -u git -H mkdir /home/git/gitlab-satellites
-$ sudo -u git -H mkdir tmp/pids/
-$ sudo -u git -H mkdir tmp/sockets/
-$ sudo chmod -R u+rwX tmp/pids/
-$ sudo chmod -R u+rwX tmp/sockets/
-$ sudo -u git -H mkdir public/uploads
-$ sudo chmod -R u+rwX public/uploads
-$ sudo -u git -H cp config/puma.rb.example config/puma.rb
-$ sudo -u git -H git config --global user.name "GitLab"
-$ sudo -u git -H git config --global user.email "`gitlab@localhost`"
-$ sudo -u git cp config/database.yml.mysql config/database.yml
+* $ sudo chown -R git log/
+* $ sudo chown -R git tmp/
+* $ sudo chmod -R u+rwX log/
+* $ sudo chmod -R u+rwX tmp/
+* $ sudo -u git -H mkdir /home/git/gitlab-satellites
+* $ sudo -u git -H mkdir tmp/pids/
+* $ sudo -u git -H mkdir tmp/sockets/
+* $ sudo chmod -R u+rwX tmp/pids/
+* $ sudo chmod -R u+rwX tmp/sockets/
+* $ sudo -u git -H mkdir public/uploads
+* $ sudo chmod -R u+rwX public/uploads
+* $ sudo -u git -H cp config/puma.rb.example config/puma.rb
+* $ sudo -u git -H git config --global user.name "GitLab"
+* $ sudo -u git -H git config --global user.email "`gitlab@localhost`"
+* $ sudo -u git cp config/database.yml.mysql config/database.yml
 
 ### Update the database configuration file
 $ sudo -u git -H nano -S config/database.yml
