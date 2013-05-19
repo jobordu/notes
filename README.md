@@ -1,4 +1,4 @@
 .configure
 ==========
 
-setup scripts, from zero to hero.
+setup and configure scripts, from zero to hero.
