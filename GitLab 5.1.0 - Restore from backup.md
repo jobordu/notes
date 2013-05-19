@@ -1,7 +1,9 @@
 # Restoring GitLab from backup
 Source: https://github.com/gitlabhq/gitlabhq/blob/4-2-stable/doc/raketasks/backup_restore.md
 
-#### Place your restore file here, in the format: /home/git/gitlab/tmp/backups/`[timestamp_of_backup]_gitlab_backup.tar`
+#### Check your restore files are in the right place
+
+And named correctly: `/home/git/gitlab/tmp/backups/[timestamp_of_backup]_gitlab_backup.tar`
 
 $ cd /home/git/gitlab
 
