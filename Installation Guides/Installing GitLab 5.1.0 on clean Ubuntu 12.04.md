@@ -263,6 +263,14 @@ $ cd /etc/nginx/sites-enabled
 
 $ sudo unlink default
 
+#### Set nginx maximum `client_max_body_size` to something reasonable for your HTTP push requests
+
+$ sudo nano -S /etc/nginx/nginx.conf
+
+    server {
+        client_max_body_size 50M;
+        listen *:808 default_server;
+
 $ sudo service nginx restart
 
 #### Check you still have sensible listen sockets
