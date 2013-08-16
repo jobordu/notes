@@ -1,4 +1,4 @@
 notes
 =====
 
-Assorted build and deploy reference scripts.
+Assorted security, build and deploy reference documents.
