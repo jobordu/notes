@@ -60,6 +60,7 @@ http://msdn.microsoft.com/en-us/library/vstudio/ms228262(v=vs.100).aspx
         <remove name="Server" />
         <remove name="X-Powered-By" />
         <remove name="X-AspNet-Version" />
+        <remove name="X-AspNetMvc-Version" />
       </customHeaders>
     </httpProtocol>
 </system.webServer>
