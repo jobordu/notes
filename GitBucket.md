@@ -1,7 +1,9 @@
 Avoid installing as root.
 
 `$ apt-get update && apt-get upgrade`
+
 `$ apt-get install ssh denyhosts openjdk-7-jre`
+
 `$ adduser wwwuser`
 
 Edit the configuration to suit your needs
@@ -40,6 +42,8 @@ To install GitBucket
 
 `$ cd /usr/local/bin/`
 
+Create a start script 
+
 `$ sudo nano gitbucket-start.sh`
 
 ```sh
@@ -47,6 +51,8 @@ To install GitBucket
  
  sudo -u wwwuser -H java -jar /home/wwwuser/gitbucket-binary/gitbucket-1.7.war &
 ```
+
+Create a stop script
 
 `$ sudo nano gitbucket-stop.sh`
 
@@ -57,7 +63,9 @@ To install GitBucket
  kill -9 $pid
 ```
 
-$ nano /etc/init.d/gitbucket
+Create the start-up script in `init.d`
+
+`$ nano /etc/init.d/gitbucket`
 
 ```sh
  #!/bin/bash
@@ -89,6 +97,9 @@ Set the script to startup using SysV
 
 `$ sudo update-rc.d gitbucket defaults`
 
+Test
+
+`$ sudo reboot`
 
 
 
