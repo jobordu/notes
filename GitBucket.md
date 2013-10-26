@@ -1,9 +1,7 @@
 Avoid installing as root.
 
 `$ apt-get update && apt-get upgrade`
-
 `$ apt-get install ssh denyhosts openjdk-7-jre`
-
 `$ adduser wwwuser`
 
 Edit the configuration to suit your needs
