@@ -22,7 +22,7 @@ SSH with the appropriate user
 
 `wwwuser`
 
-Download GitBucket
+Download GitBucket, which ever version you want
 
 `$ cd ~`
 
@@ -32,11 +32,13 @@ Download GitBucket
 
 `$ cd gitbucket-binary`
 
+`$ wget -O gitbucket-1.6.war https://github.com/takezoe/gitbucket/releases/download/1.6/gitbucket.war`
 `$ wget -O gitbucket-1.7.war https://github.com/takezoe/gitbucket/releases/download/1.7/gitbucket.war`
+`$ wget -O gitbucket-1.8.war https://github.com/takezoe/gitbucket/releases/download/1.8/gitbucket.war`
 
 To run GitBucket
 
-`$ java -jar gitbucket.war`
+`$ java -jar gitbucket-1.8.war`
 
 To install GitBucket
 
@@ -49,7 +51,9 @@ Create a start script
 ```sh
  #!/bin/bash
  
- sudo -u wwwuser -H java -jar /home/wwwuser/gitbucket-binary/gitbucket-1.7.war &
+ #sudo -u wwwuser -H java -jar /home/wwwuser/gitbucket-binary/gitbucket-1.6.war &
+ #sudo -u wwwuser -H java -jar /home/wwwuser/gitbucket-binary/gitbucket-1.7.war &
+ sudo -u wwwuser -H java -jar /home/wwwuser/gitbucket-binary/gitbucket-1.8.war &
 ```
 
 Create a stop script
